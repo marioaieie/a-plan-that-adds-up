@@ -7,7 +7,7 @@ import numpy as np
 sources = pd.read_csv('sources.csv')
 sources.sort_values('source', inplace=True)
 
-sources['area'] = 44
+sources['area'] = 42
 sources['power'] = sources['power_density'] * sources['area'] / 1000. * 24
 
 # sources['power'] = 20
@@ -30,6 +30,6 @@ for idx, item in sources.iterrows():
     plt.text(0, item['cumulative_power'] - item['power']/2.,
              '{name}: {pow:0.1f} kWh/d'.format(name=item['source'], pow=item['power']),
              horizontalalignment='center', verticalalignment='center')
-
+sources.to_dict(orient='record')
 plt.show()
 
